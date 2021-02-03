@@ -37,7 +37,14 @@ function doesFriendExist(ageInText, ageInNumber){
 //How many sweets did her friend get to eat?
 function sweetTooth(totalNoofSweets, sweetsConsumeByKaren, sweetsConsumedInNMeters, metersToTravel) {
     
-    return (totalNoofSweets - (sweetsConsumeByKaren + sweetsConsumedInNMeters * metersToTravel))/2;
+    if (Number.isInteger(totalNoofSweets) && Number.isInteger(sweetsConsumeByKaren) &&
+        Number.isInteger(sweetsConsumedInNMeters) && Number.isInteger(metersToTravel)) {
+            return (totalNoofSweets - (sweetsConsumeByKaren + sweetsConsumedInNMeters * metersToTravel))/2;
+        
+    } else {
+        return "No sweets for Karen's friend";
+    }
+    
         
     
 }
@@ -48,7 +55,7 @@ function sweetTooth(totalNoofSweets, sweetsConsumeByKaren, sweetsConsumedInNMete
 function convertToCelsius(fahrenheit) {
 
     if (typeof (fahrenheit) !="number") {
-        return "Fahrenheit's type is not compatible";
+        return "Technical Error!";
     } else {
         return 5 / 9 * (fahrenheit - 32);
     }
@@ -75,9 +82,18 @@ function aDifficultChoice(choice) {
         case 4:
             return "Lock her daughter in her room"
             break;
-        
-
-        }
+        case undefined:
+            return "Wasn't able to decide";
+            break;
+        case -1:
+            return 'Break down and give up all hope';
+            break;
+        default:
+            if (choice == "I give up") {
+                return 'Refused to do anything for Karen';
+                break;
+   
+        }}
     }
 
 //Progression 7:
